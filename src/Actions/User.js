@@ -1,4 +1,5 @@
 import Api from '../Services/Adapter';
+import { Router } from 'stateside'
 
 /**
  * Creates a user account
@@ -61,6 +62,7 @@ export function logoutUser () {
       Api().Auth.logoutUser((success) => {
         dispatch({ type: 'SUCCESS_MESSAGE', message: 'User logged out successfully.' });
         dispatch({ type: 'USER_LOGOUT' });
+        Router.to("/login");
       });
     };
 }
@@ -98,6 +100,7 @@ export function retrieveUser (uid) {
     Api().Database.read(`user/${uid}`, (identity) => {
       dispatch({ type: 'SUCCESS_MESSAGE', message: 'User retrieved successfully.' });
       dispatch({ type: 'IDENTITY_RETRIEVED', currentUser: identity });
+      Router.to("/");
     });
   };
 }
