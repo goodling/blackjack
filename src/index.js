@@ -5,9 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import createStore from './Services/Store';
-import { Provider } from 'react-redux';
 import axe from 'react-axe';
-import App from './App';
+import Main from "./Containers";
 
 
 const store = createStore();
@@ -19,9 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Main store={store} />,
   document.getElementById('root')
 );
 registerServiceWorker();
