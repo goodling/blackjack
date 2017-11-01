@@ -101,11 +101,24 @@ export function create (path, dataObj, cb) {
     firebase.database().ref(path).set(dataObj)
       .then(cb)
       .catch(handleErr);
+}
+
+/**
+ * Updates data at the specified path in database.
+ * @param {string} path the relative object path in the database.
+ * @param {object} dataObj the data object to be updated.
+ * @param {function} cb callback function; called on success.
+ */
+export function update (path, dataObj, cb) {
+    firebase.database().ref(path).update(dataObj)
+      .then(cb)
+      .catch(handleErr);
   }
 
 export const Database = {
     create,
-    read
+    read,
+    update
 }
 
 export const Firebase = {

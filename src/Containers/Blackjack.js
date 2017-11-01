@@ -11,7 +11,10 @@ function mapStateToProps (state) {
     playerHand: state.game.playerHand,
     dealerScore: state.game.dealerScore,
     playerScore: state.game.playerScore,
-    gameStatus: state.game.gameStatus
+    gameStatus: state.game.gameStatus,
+    user: state.user.currentUser,
+    userWins: state.user.wins,
+    userLosses: state.user.losses
   };
 }
 

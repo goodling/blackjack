@@ -1,11 +1,27 @@
-import { Actions } from './Constants'
+import { Actions, GAME_STATES } from './Constants';
+import { updateUserScores } from './User'
 
 export function tallyScore() {
     return { type: Actions.TALLY_SCORE };
 }
 
 export function endGame() {
-    return { type: Actions.END_GAME }
+    return (dispatch, getState) => {
+        dispatch({ type: Actions.END_GAME })
+        if(getState().game.gameStatus === GAME_STATES.WIN){
+            let score = {
+                wins: ++(getState().user.wins),
+                losses: getState().user.losses
+            }
+            updateUserScores(getState().user.uid, score)(dispatch);
+        } else if (getState().game.gameStatus === GAME_STATES.LOSE ){
+            let score = {
+                wins: getState().user.wins,
+                losses: ++(getState().user.losses)
+            }
+            updateUserScores(getState().user.uid, score)(dispatch);
+        }
+    }
 }
 
 export function dealCards(){

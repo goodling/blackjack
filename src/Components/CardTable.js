@@ -14,7 +14,7 @@ export default class CardTable extends React.Component {
         const { drawPile, dealerHand, playerHand, dealerScore, playerScore, gameStatus} = this.props;
         return (
             <div>
-                <button disabled={drawPile.length === 0} onClick={ this.props.dealCards.bind(this) }>Deal</button>
+                <button disabled={drawPile.length === 0 || gameStatus === GAME_STATES.PLAYING} onClick={ this.props.dealCards.bind(this) }>Deal</button>
                 <hr />
                 { drawPile && drawPile.length === 0 ?
                 [<div>Deck is empty, refresh for a new game.</div>,

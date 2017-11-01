@@ -14,7 +14,7 @@ export default class Blackjack extends React.Component {
     if(this.props.logoutUser){
         this.props.logoutUser();
     }
-}
+  }
 
   renderStatusMessage() {
     const { gameStatus, playerScore, dealerScore } = this.props;
@@ -28,19 +28,26 @@ export default class Blackjack extends React.Component {
   render() {
     return (
       <div className="blackjack">
-        <button onClick={this.handleUserLogout.bind(this)}>LOG OUT</button>
-        <div className="outerspace">
-          <span className="spacheman" role="img" aria-label="spaceman">
-            👨‍🚀
-          </span>
-          <span className="rocket" role="img" aria-label="rocket">
-            🚀
-          </span>
+        <button className="button-logout" onClick={this.handleUserLogout.bind(this)}>LOG OUT</button>
+        <div className="player-stats">
+          <div>{"Player: " + this.props.user.user_name}</div>
+          <div>{"Wins: " + this.props.userWins}</div>
+          <div>{"Losses: " + this.props.userLosses}</div>
         </div>
-        <div className="message-container">
-          <h1>{this.renderStatusMessage()}</h1>
+        <div className="blackjack__inner-wrap" >
+          <div className="outerspace">
+            <span className="spacheman" role="img" aria-label="spaceman">
+              👨‍🚀
+            </span>
+            <span className="rocket" role="img" aria-label="rocket">
+              🚀
+            </span>
+          </div>
+          <div className="message-container">
+            <h1>{this.renderStatusMessage()}</h1>
+          </div>
+          <CardTable { ...this.props } />
         </div>
-        <CardTable { ...this.props } />
       </div>
     );
   }

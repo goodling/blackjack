@@ -34,11 +34,10 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div className='app'>
-                <h1 className='app__greeting'>
-                Example Login
+            <div className='login'>
+                <h1 className='login__greeting'>
+                    Simple Blackjack
                 </h1>
-                <button onClick={this.handleUserLogout.bind(this)}>LOG OUT</button>
                 <div>
                     <h2>Create User</h2>
                     <input id='username' ref='createUserName' type='text' placeholder='enter user name' />
