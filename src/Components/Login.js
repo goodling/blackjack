@@ -35,24 +35,25 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className='login'>
-                <h1 className='login__greeting'>
-                    Simple Blackjack
-                </h1>
-                <div>
-                    <h2>Create User</h2>
-                    <input id='username' ref='createUserName' type='text' placeholder='enter user name' />
-                    <input id='email' ref='createEmail' type='text' placeholder='enter email' />
-                    <input id='pass' ref='createPass' type='password' placeholder='password' />
-                    <button onClick={this.handleOnCreateUser.bind(this)}>Create User</button>
+                <div className='login__inner-wrap'>
+                    <h1 className='login__header'>
+                        Redux Blackjack
+                    </h1>
+                    <div>
+                        <h2 className='login__sub-header'>Login</h2>
+                        <input id='email' ref='loginEmail' type='text' placeholder='enter email' />
+                        <input id='pass' ref='loginPass' type='password' placeholder='password' />
+                        <button onClick={this.handleOnLogin.bind(this)}>LOG IN</button>
+                    </div>
+                    <div><h2 className='login__sub-header'>or..</h2></div>
+                    <div>
+                        <h2 className='login__sub-header'>Create User</h2>
+                        <input id='username' ref='createUserName' type='text' placeholder='enter user name' />
+                        <input id='email' ref='createEmail' type='text' placeholder='enter email' />
+                        <input id='pass' ref='createPass' type='password' placeholder='password' />
+                        <button onClick={this.handleOnCreateUser.bind(this)}>Create User</button>
+                    </div>
                 </div>
-
-                <div>
-                    <h2>Login User</h2>
-                    <input id='email' ref='loginEmail' type='text' placeholder='enter email' />
-                    <input id='pass' ref='loginPass' type='password' placeholder='password' />
-                    <button onClick={this.handleOnLogin.bind(this)}>LOG IN</button>
-                </div>
-
             </div>
         );
     }

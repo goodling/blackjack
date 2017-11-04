@@ -19,3 +19,30 @@ body {
     box-sizing: inherit;
   }
 }
+
+input[type=text],
+input[type=password] {
+  line-height: 3em;
+  font-family: inherit;
+  padding: 0 1em;
+}
+
+button {
+    border: none
+    font-size: 1em
+    cursor: pointer
+    padding: rem(8 16)
+    background: $white
+    gameButtonFont();
+    border-radius: rem(5);
+    transition: background 250ms ease
+
+    &:hover {
+    background: $gray--100
+    }
+
+    &:disabled {
+    color: $gray--300;
+    background-color: $gray--100;
+    }
+}
