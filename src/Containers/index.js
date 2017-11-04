@@ -14,12 +14,10 @@ export default function Main({ store }) {
     return guest;
   }
 
-//had this for some reason, ask Nick
-// return "/login?postlogin=" + window.location.href;
 
   const MustBeLoggedIn = withRedirect(function () {
     if (isGuest()) {
-      return "/login";
+      return "/login?postlogin=" + window.location.href;
     }
     return null;
   })("div");
