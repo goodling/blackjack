@@ -27,7 +27,7 @@ export default class Login extends React.Component {
 
         if(this.props.createUser){
             this.props.createUser(email, pass, user, function(){
-                console.log('args: ', arguments);
+                // console.log('args: ', arguments);
             })
         }
     }

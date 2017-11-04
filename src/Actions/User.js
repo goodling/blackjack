@@ -38,7 +38,8 @@ export function checkUser () {
   return (dispatch) => {
     Api().Auth.checkUser((user) => {
       if (user) {
-        console.log('LOGGED IN: ', user);
+        console.log('Logged in.');
+        // console.log('Logged in. ', user);
         dispatch({ type: 'SET_CURRENT_USER', uid: user.uid });
         retrieveUser(user.uid)(dispatch);
         retrieveUserScores(user.uid)(dispatch);
