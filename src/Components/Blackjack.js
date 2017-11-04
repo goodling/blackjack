@@ -25,6 +25,15 @@ export default class Blackjack extends React.Component {
     return 'Welcome to a redux blackjack game. Press Deal to begin!';
   }
 
+  renderEmoji(){
+    const { gameStatus, playerScore, dealerScore } = this.props;
+    if(gameStatus === GAME_STATES.LOSE && playerScore > 21) return '😬';
+    if(gameStatus === GAME_STATES.WIN) return '🤑';
+    if(gameStatus === GAME_STATES.LOSE && playerScore < dealerScore) return '😜';
+    if(gameStatus === GAME_STATES.PLAYING) return '😉';
+    return '☺️';
+  }
+
   render() {
     return (
       <div className="blackjack">
@@ -37,7 +46,7 @@ export default class Blackjack extends React.Component {
         <div className="blackjack__inner-wrap" >
           <div className="outerspace">
             <span className="spacheman" role="img" aria-label="spaceman">
-              👨‍🚀
+              {this.renderEmoji()}
             </span>
             <span className="rocket" role="img" aria-label="rocket">
               🚀

@@ -11,7 +11,6 @@ export default class Hand extends React.Component {
                 <div className="hand__card-wrap">
                     { cards.map((card, i) =>
                         <Card
-                            face={ card.rank + card.symbol }
                             faceDown={ card.faceDown }
                             color={ card.color }
                             rank={ card.rank }
