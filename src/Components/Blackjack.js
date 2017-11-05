@@ -1,8 +1,30 @@
 import React from 'react';
 import CardTable from './CardTable';
 import { GAME_STATES } from '../Actions/Constants';
+import { Howl } from 'howler';
+import entertainer from '../Assets/entertainer.wav';
 
 export default class Blackjack extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { muted: false } ;
+    this.music = undefined;
+  }
+
+  componentDidMount(){
+    this.music = new Howl({
+      src: [entertainer],
+      autoplay: true,
+      loop: true,
+      volume: 0.1
+    });
+    this.music.play();
+  }
+
+  componentWillUnmount(){
+    this.music.unload();
+  }
 
   dealCards() {
     if (this.props.dealCards){
@@ -14,6 +36,14 @@ export default class Blackjack extends React.Component {
     if(this.props.logoutUser){
         this.props.logoutUser();
     }
+  }
+
+  handleMute(){
+    this.setState({ muted: !this.state.muted }, function(){
+      if(this.music){
+        this.music.mute(this.state.muted);
+      }
+    });
   }
 
   renderStatusMessage() {
@@ -39,24 +69,25 @@ export default class Blackjack extends React.Component {
       <div className="blackjack">
         <button className="button-logout" onClick={this.handleUserLogout.bind(this)}>LOG OUT</button>
         <div className="player-stats">
-          <div>{"Player: " + this.props.user.user_name}</div>
-          <div>{"Wins: " + this.props.userWins}</div>
-          <div>{"Losses: " + this.props.userLosses}</div>
+        <div>{"Player: " + this.props.user.user_name}</div>
+        <div>{"Wins: " + this.props.userWins}</div>
+        <div>{"Losses: " + this.props.userLosses}</div>
         </div>
         <div className="blackjack__inner-wrap" >
-          <div className="outerspace">
-            <span className="spacheman" role="img" aria-label="spaceman">
-              {this.renderEmoji()}
-            </span>
-            <span className="rocket" role="img" aria-label="rocket">
-              🚀
-            </span>
-          </div>
-          <div className="message-container">
-            <h1>{this.renderStatusMessage()}</h1>
-          </div>
-          <CardTable { ...this.props } />
+        <div className="outerspace">
+        <span className="spacheman" role="img" aria-label="spaceman">
+        {this.renderEmoji()}
+        </span>
+        <span className="rocket" role="img" aria-label="rocket">
+        🚀
+        </span>
         </div>
+        <div className="message-container">
+        <h1>{this.renderStatusMessage()}</h1>
+        </div>
+        <CardTable { ...this.props } />
+        </div>
+        <button className="button-mute" onClick={this.handleMute.bind(this)}>{this.state.muted ? '🔇' : '🔈' }</button>
       </div>
     );
   }
