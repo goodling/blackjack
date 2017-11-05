@@ -61,7 +61,7 @@ export default class Login extends React.Component {
                         <h2 className='login__sub-header'>Login to play</h2>
                         <input id='email' ref='loginEmail' type='text' placeholder='enter email' />
                         <input id='pass' ref='loginPass' type='password' placeholder='password' />
-                        <button onClick={this.handleOnLogin.bind(this)}>LOG IN</button>
+                        <button onClick={this.handleOnLogin.bind(this)}>Log In</button>
                     </div>
                     <div><h2 className='login__sub-header'>or..</h2></div>
                     <div>
