@@ -2,7 +2,7 @@ import React from 'react';
 import CardTable from './CardTable';
 import { GAME_STATES } from '../Actions/Constants';
 import { Howl } from 'howler';
-import entertainer from '../Assets/entertainer.wav';
+import entertainer from '../Assets/entertainer.mp3';
 
 export default class Blackjack extends React.Component {
 
@@ -17,7 +17,7 @@ export default class Blackjack extends React.Component {
       src: [entertainer],
       autoplay: true,
       loop: true,
-      volume: 0.1
+      volume: 0.05
     });
     this.music.play();
   }
