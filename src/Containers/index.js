@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import Login from "./Login";
 import Blackjack from "./Blackjack";
 import NotFound from "../Components/NotFound"
-import '../App.styl';
 
 
 export default function Main({ store }) {
@@ -13,7 +12,6 @@ export default function Main({ store }) {
     var guest = (!store.getState().user.uid);
     return guest;
   }
-
 
   const MustBeLoggedIn = withRedirect(function () {
     if (isGuest()) {
